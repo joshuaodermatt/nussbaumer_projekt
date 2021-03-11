@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TasksService } from 'src/app/services/tasks/tasks.service';
 
 
 @Component({
@@ -8,7 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TasksPage implements OnInit {
 
-  constructor() { }
+  constructor(public taskService: TasksService) {
+   }
 
   ngOnInit() {
   }

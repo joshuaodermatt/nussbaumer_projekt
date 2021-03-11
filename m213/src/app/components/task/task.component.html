@@ -1,6 +1,14 @@
 <ion-item>
-  <ion-card class='card'>
+  <div id="content-wrapper">
+    <div id='task-title-wrapper'>
+      <h3>Aufgabe {{id + 1}}</h3>
+      <p class="task-description" >{{description}}</p>
+    </div>
+    <ion-card class='card'>
+      <ion-textarea id="text-area" placeholder="Enter sql statement here">
 
-  </ion-card>
+      </ion-textarea>
+    </ion-card>
+  </div>
 </ion-item>
 
