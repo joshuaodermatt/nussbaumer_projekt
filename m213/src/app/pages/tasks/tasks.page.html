@@ -2,7 +2,6 @@
   <div id='container'>
     
     <app-task *ngFor="let task of taskService.getTasks()" [(description)]="task.description" [(id)]="task.id"></app-task>
- 
 </div>
 </ion-content>
   

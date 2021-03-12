@@ -15,4 +15,8 @@ export class TasksPage implements OnInit {
   ngOnInit() {
   }
 
+  submit(){
+    //submit data
+  }
+
 }
