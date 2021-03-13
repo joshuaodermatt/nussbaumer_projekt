@@ -5,7 +5,7 @@
       <p class="task-description" >{{description}}</p>
     </div>
     <ion-card class='card' >
-      <ion-textarea id="text-area" placeholder="Enter sql statement here">
+      <ion-textarea [(ngModel)]="this.input" id="text-area" placeholder="Enter sql statement here">
       </ion-textarea>
     </ion-card>
     <ion-button class="submit" (click)="submit()" *ngIf="this.validation==0">
@@ -16,6 +16,9 @@
     </ion-button>
     <ion-button class="submit" (click)="submit()" *ngIf="this.validation==2" style="--background: #f07d7d">
       <ion-icon name="close-outline" *ngIf="this.validation == 2"></ion-icon>
+    </ion-button>
+    <ion-button class="submit" (click)="submit()" *ngIf="this.validation==4">
+      <ion-spinner name="crescent"></ion-spinner>
     </ion-button>
   </div>
 </ion-item>

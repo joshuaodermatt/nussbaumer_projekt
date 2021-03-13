@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Input } from '@angular/core';
+import { RequestService } from 'src/app/services/request/request.service';
 import { ValidationService } from 'src/app/services/validation/validation.service';
 
 
@@ -16,17 +17,15 @@ export class TaskComponent implements OnInit {
 
   @Input() id: any;
 
-  constructor( public validatioserivice : ValidationService) { }
+  constructor( public validatioserivice : ValidationService, public requestservice : RequestService) { }
 
   ngOnInit() {}
 
-  submit(){
-      var res = this.validatioserivice.check_data();
-      if(res){
-        this.validation = 1;
-      }else{
-        this.validation = 2;
-      }
-  }
+  input: string;
+
+  async submit(){
+    this.validation = 4;
+    this.requestservice.request(this.input);
+    }
 
 }
