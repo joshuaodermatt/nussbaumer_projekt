@@ -6,13 +6,12 @@ import { ValidationService } from '../validation/validation.service';
   providedIn: 'root'
 })
 export class RequestService {
-  constructor(public http: HttpClient, public validationservice: ValidationService) {}
+  constructor(public http: HttpClient) {}
 
-  request(input: string){
-     this.http.get('https://42217.wayscript.io/?request=' + input).subscribe(data => {
+  request(input: string): any{
+    this.http.get('https://42217.wayscript.io/?request=' + input).subscribe(data => {
       console.log(data);
-      this.validationservice.check_data();
-    })
-    
+      return data;
+    });
   }
 }

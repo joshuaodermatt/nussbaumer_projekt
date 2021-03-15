@@ -29,11 +29,18 @@ const tasks = [
 
 
 
-
-export class TasksService {
+ export class TasksService {
 
   getTasks(){
     return tasks;
+  }
+
+  getTask(taskId): any{
+    for (const task of tasks) {
+      if (task.id === taskId) {
+        return task;
+      }
+    }
   }
 
   constructor() { }

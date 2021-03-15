@@ -13,19 +13,19 @@ export class TaskComponent implements OnInit {
 
   validation = 0;
 
+  input: string;
+
   @Input() description: string;
 
   @Input() id: any;
 
-  constructor( public validatioserivice : ValidationService, public requestservice : RequestService) { }
+  constructor( public validationService: ValidationService) { }
 
   ngOnInit() {}
 
-  input: string;
 
-  async submit(){
-    this.validation = 4;
-    this.requestservice.request(this.input);
-    }
+  async submit($event){
+    this.validationService.check_data(this.input, this.id);
+  }
 
 }
