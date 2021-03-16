@@ -12,20 +12,22 @@ import { ValidationService } from 'src/app/services/validation/validation.servic
 export class TaskComponent implements OnInit {
 
   validation = 0;
-
-  input: string;
+  checkedData: boolean;
 
   @Input() description: string;
 
   @Input() id: any;
 
-  constructor( public validationService: ValidationService) { }
+  @Input() answer: string;
+
+  input: string;
+
+  constructor(public validatioserivice : ValidationService, public requestservice : RequestService) { }
 
   ngOnInit() {}
 
-
-  async submit($event){
-    this.validationService.check_data(this.input, this.id);
+  async submit(){
+    this.requestservice.request(this.input,this.answer);
   }
 
 }

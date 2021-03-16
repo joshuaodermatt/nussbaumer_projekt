@@ -6,12 +6,36 @@ import { ValidationService } from '../validation/validation.service';
   providedIn: 'root'
 })
 export class RequestService {
-  constructor(public http: HttpClient) {}
+  constructor(public http: HttpClient, public validationservice: ValidationService) {}
 
-  request(input: string): any{
+  userAnswer : any; 
+  rightAnswer : any;
+  checkedData: boolean = false;
+
+  request(input: string,answer: string){
+
     this.http.get('https://42217.wayscript.io/?request=' + input).subscribe(data => {
-      console.log(data);
-      return data;
-    });
+
+      this.userAnswer = data;
+    })  
+    this.http.get('https://42217.wayscript.io/?request=' + answer).subscribe(data => {
+
+      this.rightAnswer = data;
+
+      console.log(this.waitForElement());
+    })  
+  }
+
+  waitForElement():boolean{
+    if(typeof this.rightAnswer !== "undefined" && typeof this.userAnswer !== "undefined"){
+        console.log("Data aviable.");
+        return this.validationservice.check_data(this.userAnswer,this.rightAnswer)
+    }
+    else{
+        console.log("Waiting for data...")
+        setTimeout(this.waitForElement, 250);
+    }
   }
 }
+
+

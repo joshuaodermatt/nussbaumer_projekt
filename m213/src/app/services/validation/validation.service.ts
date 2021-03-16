@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import {RequestService} from '../request/request.service';
-import {TasksService} from '../tasks/tasks.service';
-
+import * as _ from 'lodash';
 
 @Injectable({
   providedIn: 'root'
@@ -11,23 +9,13 @@ import {TasksService} from '../tasks/tasks.service';
 
 export class ValidationService {
 
+  constructor() { }
 
-
-  constructor(private request: RequestService, private tasksService: TasksService) { }
-
-  check_data(requestStatement: string, taskId): boolean{
-    // requesting from entered statement
-    const resEntered = this.request.request(requestStatement);
-
-    const task = this.tasksService.getTask(taskId);
-
-    // requesting from correct statement
-    const resCorrect = this.request.request(task.answer);
-
-    if ( JSON.stringify(resEntered) === JSON.stringify(resCorrect)) {
-      return true;
+  check_data(userData: any, rightanswer: any):boolean{
+    if(JSON.stringify(userData) === JSON.stringify(rightanswer)){
+      return true
+    }else{
+      return false;
     }
-
-    return false;
   }
 }

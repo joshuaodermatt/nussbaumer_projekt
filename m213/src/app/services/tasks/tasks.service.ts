@@ -3,8 +3,9 @@ import { Injectable } from '@angular/core';
 const tasks = [
   {
     "id": 0,
-    "description": 'geben sie alle Einträge der Tabelle bla bla zurück',
-    "answer": 'bla bla'
+    "description": 'geben sie alle Einträge der Tabelle orders zurück',
+    "answer": 'select * from orders',
+
   },
   {
     "id": 1,
@@ -29,18 +30,11 @@ const tasks = [
 
 
 
- export class TasksService {
+
+export class TasksService {
 
   getTasks(){
     return tasks;
-  }
-
-  getTask(taskId): any{
-    for (const task of tasks) {
-      if (task.id === taskId) {
-        return task;
-      }
-    }
   }
 
   constructor() { }
